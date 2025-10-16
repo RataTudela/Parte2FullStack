@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
+
 import "./styles/CssInicioSesion.css";
 import "./styles/CssContactHtml.css";
 import "./styles/main.css";
@@ -16,7 +15,6 @@ const Contacto = () => {
   return (
     <>
       <div id="page-wrapper">
-        <Header />
 
         {/* Formulario */}
         <div className="img-fondo">
@@ -53,7 +51,6 @@ const Contacto = () => {
           </div>
         </div>
 
-        <Footer />
       </div>
     </>
   );

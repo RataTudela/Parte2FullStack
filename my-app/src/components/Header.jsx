@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -7,29 +8,39 @@ export default function Header() {
         {/* Logo */}
         <div id="logo">
           <h1>
-            <a href="home.html">
+            <NavLink to="/">
               <img src="src/images/Logo_de_GameCloud.png" alt="Logo GameCloud" />
-            </a>
+            </NavLink>
           </h1>
         </div>
 
         {/* Nav */}
         <nav id="nav">
           <ul>
-            <li className="current">
-              <a href="App.jsx">Home</a>
+            <li>
+              <NavLink to="/" end className={({ isActive }) => (isActive ? "current" : "")}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="productos.html">Productos</a>
+              <NavLink to="/inicio-sesion" className={({ isActive }) => (isActive ? "current" : "")}>
+                Inicio Sesión
+              </NavLink>
             </li>
             <li>
-              <a href="inicioSesion.html">Inicio Sesion</a>
+              <NavLink to="/contacto" className={({ isActive }) => (isActive ? "current" : "")}>
+                Contacto
+              </NavLink>
             </li>
             <li>
-              <a href="contacto.html">Contacto</a>
+              <NavLink to="/blog" className={({ isActive }) => (isActive ? "current" : "")}>
+                Blog
+              </NavLink>
             </li>
             <li>
-              <a href="blog.html">Blog</a>
+              <NavLink to="/productos" className={({ isActive }) => (isActive ? "current" : "")}>
+                Productos
+              </NavLink>
             </li>
           </ul>
         </nav>

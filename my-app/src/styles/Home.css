@@ -34,7 +34,7 @@
     text-align: center;
 }
 
-.img-fondo {
+body.route-home .img-fondo {
     background-image: url('src/images/balatro.jpg'); 
     background-size: cover; 
     background-position: center;

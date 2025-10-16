@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 
 import "./styles/CssRegistro.css";
@@ -12,9 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Home() {
   return (
     <div id="page-wrapper" className="is-preload homepage">
-      <Header/>
 
-      {/* Main content */}
+      {/* Home */}
       <div className="img-fondo">
         <div className="wrapper">
           <div className="contenedor-flex">
@@ -95,8 +92,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

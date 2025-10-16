@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 import "./styles/CssInicioSesion.css";
 import "./styles/main.css";
 export default function InicioSesion() {
@@ -12,7 +11,6 @@ export default function InicioSesion() {
 
   return (
     <>
-      <Header />
       <div className="img-fondo">
         <div className="login-box">
           <div>
@@ -58,7 +56,6 @@ export default function InicioSesion() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

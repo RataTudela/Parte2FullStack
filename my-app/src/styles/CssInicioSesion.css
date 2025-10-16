@@ -1,4 +1,4 @@
-.img-fondo {
+body.route-inicio-sesion .img-fondo {
             background-image: url('src/images/samurai-cyberpunk.jpg'); 
             background-size: cover; 
             background-position: center;
@@ -9,7 +9,8 @@
             align-items: center;
         }
 
-img{
+/* Limit image sizing to images inside the login box to avoid overriding global images */
+.login-box img{
     width: 75px;
 }
 
