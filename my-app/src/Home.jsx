@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { useNavigate } from "react-router-dom";
 import "./styles/CssRegistro.css";
 import "./styles/main.css";
 import "./styles/detalleproducto.css";
@@ -8,6 +7,7 @@ import "./styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div id="page-wrapper" className="is-preload homepage">
 
@@ -23,7 +23,7 @@ export default function Home() {
                 Somos una tienda de juegos nacida en el año 2025, donde buscamos
                 entregarte los mejores precios en videojuegos, con la mejor calidad, En Chile.
               </h3>
-              <a className="button" href="productos.html" role="button">
+              <a className="button"  onClick={() => navigate('/productos')} role="button">
                 Ir a productos
               </a>
             </div>
