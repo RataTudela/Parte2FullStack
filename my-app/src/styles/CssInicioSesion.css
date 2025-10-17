@@ -9,20 +9,22 @@ body.route-inicio-sesion .img-fondo {
             align-items: center;
         }
 
-/* Limit image sizing to images inside the login box to avoid overriding global images */
 .login-box img{
     width: 75px;
 }
 
 .login-box {
-            background-color: #8bbef8; 
-            width: 500px; 
-            padding: 20px; 
-            border: 1px solid #000000; 
-            margin: 50px auto;
-            height: 630px; 
-            max-width: 400px;
-}   
+    background-color: #8bbef8;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #000000;
+    margin: 50px auto;
+    max-height: 600px; 
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 .login-box img {
             display: block; 
@@ -58,6 +60,7 @@ body.route-inicio-sesion .img-fondo {
     .login-box {
         width: 95%; 
         padding: 15px;
+        height: auto;
     }
 }
 
