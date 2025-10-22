@@ -2,18 +2,17 @@
 // Exporta: products, validarLogin, validarRegistro, validarContacto, addToCart, getCart, clearCart, getProduct
 
 const products = [
-  { nombre: "Persona 3 Reload", comentario: "Juego JRPG...", precio: 18500, imagen: "/images/pic01.jpg" },
-  { nombre: "God of War: Ragnarok", comentario: "Secuela de God Of War...", precio: 25500, imagen: "/images/pic02.jpg" },
-  { nombre: "SilkSong", comentario: "Secuela de Hollow Knight...", precio: 10500, imagen: "/images/pic03.jpg" },
-  { nombre: "Lego BatMan", comentario: "Juego protagonizado por Batman...", precio: 5500, imagen: "/images/pic04.jpg" },
-  { nombre: "Elden Ring", comentario: "Mundo de las Tierras Intermedias...", precio: 30000, imagen: "/images/pic05.jpg" },
-  { nombre: "Sekiro", comentario: "Sekiro: Shadows Die Twice...", precio: 22000, imagen: "/images/pic06.jpg" },
-  { nombre: "Call Of Duty BO2", comentario: "Black Ops 2...", precio: 19990, imagen: "/images/blackOPs.jpg" },
-  { nombre: "2K26", comentario: "NBA 2K26...", precio: 40000, imagen: "/images/2K26.jpg" },
-  { nombre: "No Man's Sky", comentario: "Videojuego de exploración...", precio: 15000, imagen: "/images/nomansky.jpg" }
+  { nombre: "Persona 3 Reload", comentario: "Juego JRPG...", precio: 18500, imagen: "src/images/pic01.jpg" },
+  { nombre: "God of War: Ragnarok", comentario: "Secuela de God Of War...", precio: 25500, imagen: "src/images/pic02.jpg" },
+  { nombre: "SilkSong", comentario: "Secuela de Hollow Knight...", precio: 10500, imagen: "src/images/pic03.jpg" },
+  { nombre: "Lego BatMan", comentario: "Juego protagonizado por Batman...", precio: 5500, imagen: "src/images/pic04.jpg" },
+  { nombre: "Elden Ring", comentario: "Mundo de las Tierras Intermedias...", precio: 30000, imagen: "src/images/pic05.jpg" },
+  { nombre: "Sekiro", comentario: "Sekiro: Shadows Die Twice...", precio: 22000, imagen: "src/images/pic06.jpg" },
+  { nombre: "Call Of Duty BO2", comentario: "Black Ops 2...", precio: 19990, imagen: "src/images/blackOPs.jpg" },
+  { nombre: "2K26", comentario: "NBA 2K26...", precio: 40000, imagen: "src/images/2K26.jpg" },
+  { nombre: "No Man's Sky", comentario: "Videojuego de exploración...", precio: 15000, imagen: "src/images/nomansky.jpg" }
 ];
 
-// Validaciones (devuelven { ok: boolean, errors: { campo: mensaje } })
 function validarEmailBasico(email) {
   const termina = ["@duocuc.cl", "@profesor.duoc.cl", "@gmail.com"];
   if (!email) return { ok: false, message: 'Correo no ingresado.' };

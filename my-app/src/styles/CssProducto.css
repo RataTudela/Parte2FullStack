@@ -64,7 +64,7 @@ body.route-productos .img-fondos {
     max-height: 220px !important;
     object-fit: contain !important;
     display: block !important;
-    background: #000; /* dark background to avoid white gaps */
+    background: #000; 
 }
 
 .card-body {

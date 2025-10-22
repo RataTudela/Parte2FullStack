@@ -1,5 +1,5 @@
-.imagen-fondo {
-            background-image: url('images/samu4k.jpg'); 
+body.route-detalle-producto .imagen-fondo {
+            background-image: url('src/images/samu4k.jpg'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 
