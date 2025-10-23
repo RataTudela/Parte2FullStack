@@ -1,6 +1,4 @@
-/* CssRegistro.css */
 
-/* Fondo específico para la página de registro */
 body.route-registro .img-fondo {
     background-image: url('src/images/samurai-cyberpunk.jpg');
     background-size: cover;
@@ -12,29 +10,26 @@ body.route-registro .img-fondo {
     align-items: center;
 }
 
-/* Estilo para la caja de registro */
 body.route-registro .login-box {
-    background-color: #8bbef8; /* Color de fondo */
-    width: 500px; /* Ancho de la caja */
-    padding: 20px; /* Relleno interno */
-    border: none; /* Eliminamos el borde negro */
-    margin: 50px auto; /* Centrando la caja */
+    background-color: #8bbef8; 
+    width: 500px; 
+    padding: 20px;
+    border: none; 
+    margin: 50px auto; 
     max-height: 1000px;
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrar contenido verticalmente */
+    justify-content: center; 
 }
 
-/* Imagen dentro de la caja de registro */
 body.route-registro .login-box img {
-    width: 150px; /* Tamaño de la imagen */
-    margin-bottom: -10px; /* Ajuste de margen */
+    width: 150px; 
+    margin-bottom: -10px; 
     display: block;
     margin: 0 auto;
 }
 
-/* Título de la caja de registro */
 body.route-registro .login-box h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -42,7 +37,6 @@ body.route-registro .login-box h2 {
     font-size: 28px;
 }
 
-/* Estilo de los botones */
 body.route-registro .login-box button {
     width: 100%;
     padding: 10px;
@@ -53,7 +47,6 @@ body.route-registro .login-box button {
     cursor: pointer;
 }
 
-/* Estilo de los enlaces */
 body.route-registro .login-box a {
     display: block;
     text-align: center;
@@ -61,7 +54,6 @@ body.route-registro .login-box a {
     color: #000000;
 }
 
-/* Estilos para los campos de entrada */
 body.route-registro .login-box input {
     width: 100%;
     padding: 10px;
@@ -69,18 +61,11 @@ body.route-registro .login-box input {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #ffffff; /* Fondo blanco */
-    box-sizing: border-box; /* Para que el padding no agrande el tamaño */
+    background-color: #ffffff; 
+    box-sizing: border-box; 
 }
 
-/* Error text */
-body.route-registro .fore-text {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
 
-/* Estilo responsive para pantallas pequeñas */
 @media (max-width: 600px) {
     body.route-registro .login-box {
         width: 95%;

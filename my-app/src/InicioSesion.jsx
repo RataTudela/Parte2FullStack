@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Importa useNavigate de React Router
-import { validarCorreoYContraseña } from './utils/validaciones'; // Importa la función de validación
+import { useNavigate } from 'react-router-dom';  
+import { validarCorreoYContraseña } from './utils/validaciones'; 
 import "./styles/CssInicioSesion.css";
 import "./styles/main.css";
 
 export default function InicioSesion() {
-   // Estados para manejar los valores del formulario y los errores
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [emailError, setEmailError] = useState('');
    const [passwordError, setPasswordError] = useState('');
 
-   // Inicializa el hook useNavigate para la navegación
    const navigate = useNavigate();
 
-   // Validar formulario de inicio de sesión al hacer submit
    const handleSubmit = (event) => {
-     // Llamamos a la función de validación importada
      const valid = validarCorreoYContraseña(
        event,
        email,
@@ -25,7 +21,6 @@ export default function InicioSesion() {
        setPasswordError
      );
  
-     // Si la validación es exitosa, limpiamos los campos y mostramos el mensaje
      if (valid) {
        setEmail('');
        setPassword('');
@@ -48,7 +43,7 @@ export default function InicioSesion() {
                  className="form-control"
                  id="email"
                  value={email}
-                 onChange={(e) => setEmail(e.target.value)} // Asegúrate de actualizar el estado
+                 onChange={(e) => setEmail(e.target.value)} 
                />
                {emailError && <div className="fore-text">{emailError}</div>}
              </div>
@@ -60,7 +55,7 @@ export default function InicioSesion() {
                  className="form-control"
                  id="contraseña"
                  value={password}
-                 onChange={(e) => setPassword(e.target.value)} // Asegúrate de actualizar el estado
+                 onChange={(e) => setPassword(e.target.value)} 
                />
                {passwordError && <div className="fore-text">{passwordError}</div>}
              </div>
@@ -79,11 +74,9 @@ export default function InicioSesion() {
              <button type="submit" className="btn btn-primary">
                Iniciar Sesión
              </button>
-
-             {/* Navegar al registro */}
              <div>
                <a
-                 onClick={() => navigate('/Registro')}  // Aquí es donde se redirige a la página de Registro
+                 onClick={() => navigate('/Registro')}  
                  style={{ cursor: 'pointer', textAlign: 'center', display: 'block', marginTop: '10px' }}
                >
                  ¿No tienes cuenta? Regístrate aquí

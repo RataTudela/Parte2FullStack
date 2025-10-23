@@ -1,13 +1,13 @@
-body.route-detalle-producto .imagen-fondo {
-            background-image: url('src/images/samu4k.jpg'); 
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat; 
-            min-height: 100vh; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+body.route-detalle-producto .img-fondo {
+  background-image: url('src/images/samu4k.jpg'); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  min-height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .contenedor-flex {

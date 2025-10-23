@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate para redirigir
-import "./styles/CssRegistro.css";  // Asegúrate de que esta hoja de estilo esté correcta
-import "./styles/main.css";         // También importa el archivo de estilos principal de tu proyecto
+import { useNavigate } from "react-router-dom";
+import { validarRegistro } from "./utils/validaciones"; 
+import "./styles/CssRegistro.css";
+import "./styles/main.css";
 
 export default function Registro() {
-  // Inicializar navigate para redirigir después del registro
   const navigate = useNavigate();
 
-  // Estados para manejar los valores del formulario y los errores
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
@@ -15,32 +14,46 @@ export default function Registro() {
   const [telefono, setTelefono] = useState("");
   const [region, setRegion] = useState("");
   const [comuna, setComuna] = useState("");
-  const [errors, setErrors] = useState({});
+
+  const [nombreError, setNombreError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [contraseñaError, setContraseñaError] = useState("");
+  const [confirmarContraseñaError, setConfirmarContraseñaError] = useState("");
+  const [telefonoError, setTelefonoError] = useState("");
+  const [regionError, setRegionError] = useState("");
+  const [comunaError, setComunaError] = useState("");
+  const [registroExitoso, setRegistroExitoso] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    // Validación simple del formulario
-    let validationErrors = {};
+    const valid = validarRegistro(
+      event,
+      nombre,
+      email,
+      contraseña,
+      confirmarContraseña,
+      telefono,
+      region,
+      comuna,
+      setNombreError,
+      setEmailError,
+      setContraseñaError,
+      setConfirmarContraseñaError,
+      setTelefonoError,
+      setRegionError,
+      setComunaError,
+      setRegistroExitoso
+    );
 
-    if (!nombre) validationErrors.nombre = "Este campo es obligatorio";
-    if (!email) validationErrors.email = "Este campo es obligatorio";
-    if (!contraseña) validationErrors.contraseña = "Este campo es obligatorio";
-    if (contraseña !== confirmarContraseña) validationErrors.confirmarContraseña = "Las contraseñas no coinciden";
-    if (!telefono) validationErrors.telefono = "Este campo es obligatorio";
-    if (!region) validationErrors.region = "Este campo es obligatorio";
-    if (!comuna) validationErrors.comuna = "Este campo es obligatorio";
+    if (valid) {
+      setNombre("");
+      setEmail("");
+      setContraseña("");
+      setConfirmarContraseña("");
+      setTelefono("");
+      setRegion("");
+      setComuna("");
 
-    setErrors(validationErrors);
-
-    // Si no hay errores, podemos proceder con el registro
-    if (Object.keys(validationErrors).length === 0) {
-      alert("Registro Exitoso");
-
-      // Redirige al inicio de sesión después de un registro exitoso
-      setTimeout(() => {
-        navigate('/inicio-sesion');
-      }, 1000); // Opcional: demora de 1 segundo para mostrar el mensaje de éxito
+      setTimeout(() => navigate("/inicio-sesion"), 1000);
     }
   };
 
@@ -48,7 +61,7 @@ export default function Registro() {
     <main className="img-fondo">
       <div className="login-box">
         <div>
-          <img src="src/images/Logo_de_GameCloud.png" alt="Logo de GameCloud"/>
+          <img src="src/images/Logo_de_GameCloud.png" alt="Logo de GameCloud" />
         </div>
         <h2>Registrarse</h2>
         <form onSubmit={handleSubmit}>
@@ -61,8 +74,9 @@ export default function Registro() {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
             />
-            {errors.nombre && <div className="fore-text">{errors.nombre}</div>}
+            {nombreError && <div className="fore-text">{nombreError}</div>}
           </div>
+
           <div className="form-group">
             <label htmlFor="email">Correo</label>
             <input
@@ -72,8 +86,9 @@ export default function Registro() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email && <div className="fore-text">{errors.email}</div>}
+            {emailError && <div className="fore-text">{emailError}</div>}
           </div>
+
           <div className="form-group">
             <label htmlFor="contraseña">Contraseña</label>
             <input
@@ -83,8 +98,9 @@ export default function Registro() {
               value={contraseña}
               onChange={(e) => setContraseña(e.target.value)}
             />
-            {errors.contraseña && <div className="fore-text">{errors.contraseña}</div>}
+            {contraseñaError && <div className="fore-text">{contraseñaError}</div>}
           </div>
+
           <div className="form-group">
             <label htmlFor="confirmarContraseña">Confirmar Contraseña</label>
             <input
@@ -94,8 +110,11 @@ export default function Registro() {
               value={confirmarContraseña}
               onChange={(e) => setConfirmarContraseña(e.target.value)}
             />
-            {errors.confirmarContraseña && <div className="fore-text">{errors.confirmarContraseña}</div>}
+            {confirmarContraseñaError && (
+              <div className="fore-text">{confirmarContraseñaError}</div>
+            )}
           </div>
+
           <div className="form-group">
             <label htmlFor="telefono">Teléfono</label>
             <input
@@ -105,10 +124,11 @@ export default function Registro() {
               value={telefono}
               onChange={(e) => setTelefono(e.target.value)}
             />
-            {errors.telefono && <div className="fore-text">{errors.telefono}</div>}
+            {telefonoError && <div className="fore-text">{telefonoError}</div>}
           </div>
+
           <div className="form-group">
-            <label htmlFor="region">Ingrese su Región</label>
+            <label htmlFor="region">Región</label>
             <input
               type="text"
               className="form-control"
@@ -116,10 +136,11 @@ export default function Registro() {
               value={region}
               onChange={(e) => setRegion(e.target.value)}
             />
-            {errors.region && <div className="fore-text">{errors.region}</div>}
+            {regionError && <div className="fore-text">{regionError}</div>}
           </div>
+
           <div className="form-group">
-            <label htmlFor="comuna">Ingrese su Comuna</label>
+            <label htmlFor="comuna">Comuna</label>
             <input
               type="text"
               className="form-control"
@@ -127,26 +148,32 @@ export default function Registro() {
               value={comuna}
               onChange={(e) => setComuna(e.target.value)}
             />
-            {errors.comuna && <div className="fore-text">{errors.comuna}</div>}
+            {comunaError && <div className="fore-text">{comunaError}</div>}
           </div>
-          <div className="form-group form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Acepto los términos y condiciones
-            </label>
-          </div>
+
           <button type="submit" className="btn btn-primary">
             Registrarse
           </button>
-            <div>
-          <a onClick={() => navigate('/inicio-sesion')}style={{ cursor: 'pointer', textAlign: 'center', display: 'block', marginTop: '10px' }}>
-            ¿Ya tienes cuenta? Inicia sesión aquí
-          </a>
-        </div>
+
+          {registroExitoso && (
+            <div className="success-text" style={{ marginTop: "10px", color: "green" }}>
+              {registroExitoso}
+            </div>
+          )}
+
+          <div>
+            <a
+              onClick={() => navigate("/inicio-sesion")}
+              style={{
+                cursor: "pointer",
+                textAlign: "center",
+                display: "block",
+                marginTop: "10px",
+              }}
+            >
+              ¿Ya tienes cuenta? Inicia sesión aquí
+            </a>
+          </div>
         </form>
       </div>
     </main>
