@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../styles/main.css";
 
 export default function Header() {
   return (
@@ -8,40 +9,34 @@ export default function Header() {
         {/* Logo */}
         <div id="logo">
           <h1>
-            <NavLink to="/">
-              <img src="src/images/Logo_de_GameCloud.png" alt="Logo GameCloud" />
-            </NavLink>
+            <Link to="/">
+              <img src="src/images/Logo_de_GameCloud.png" alt="GameCloud Logo" />
+            </Link>
           </h1>
+        </div>
+
+        {/* Carrito */}
+        <div className="carrito-container">
+          <div id="logo">
+            <Link to="/carrito">
+              <img 
+                src="src/images/carrito-removebg-preview.png" 
+                alt="Carrito" 
+                style={{cursor: 'pointer'}}
+              />
+            </Link>
+          </div>
+          <span id="contador">0</span>
         </div>
 
         {/* Nav */}
         <nav id="nav">
           <ul>
-            <li>
-              <NavLink to="/" end className={({ isActive }) => (isActive ? "current" : "")}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/inicio-sesion" className={({ isActive }) => (isActive ? "current" : "")}>
-                Inicio Sesión
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contacto" className={({ isActive }) => (isActive ? "current" : "")}>
-                Contacto
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/blog" className={({ isActive }) => (isActive ? "current" : "")}>
-                Blog
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/productos" className={({ isActive }) => (isActive ? "current" : "")}>
-                Productos
-              </NavLink>
-            </li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/productos">Productos</Link></li>
+            <li><Link to="/inicio-sesion">Inicio Sesion</Link></li>
+            <li><Link to="/contacto">Contacto</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </nav>
       </header>
