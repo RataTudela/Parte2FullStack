@@ -3,80 +3,69 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import "./styles/main.css";
 import "./styles/detalleproducto.css";
 
-// importar imágenes para que el bundler las gestione
-import pic01 from "./images/pic01.jpg";
-import pic02 from "./images/pic02.jpg";
-import pic03 from "./images/pic03.jpg";
-import pic04 from "./images/pic04.jpg";
-import pic05 from "./images/pic05.jpg";
-import pic06 from "./images/pic06.jpg";
-import blackOPs from "./images/blackOPs.jpg";
-import pic2k26 from "./images/2K26.jpg";
-import nomansky from "./images/nomansky.jpg";
-
 const products = [
   {
     nombre: "Persona 3 Reload",
     comentario:
       "Juego JRPG, Para PC, XBOX y PS4/PS5. Remake de Persona 3 con gráficos y ajustes modernos.",
     precio: 18500,
-    imagen: pic01,
+    imagen: "/images/pic01.jpg", 
   },
   {
     nombre: "God of War Ragnarok",
     comentario:
       "Secuela de God of War (2018) que continúa la historia de Kratos y Atreus.",
     precio: 25500,
-    imagen: pic02,
+    imagen: "/images/pic02.jpg", 
   },
   {
     nombre: "SilkSong",
     comentario:
       "Secuela de Hollow Knight. Controlas a Hornet en un reino nuevo y desafiante.",
     precio: 10500,
-    imagen: pic03,
+    imagen: "/images/pic03.jpg",
   },
   {
     nombre: "Lego BatMan",
     comentario:
       "Juego de aventuras protagonizado por Batman y Robin en versión LEGO.",
     precio: 5500,
-    imagen: pic04,
+    imagen: "/images/pic04.jpg",
   },
   {
     nombre: "Elden Ring",
     comentario:
       "Mundo abierto de fantasía oscura creado por FromSoftware con jefes y exploración profunda.",
     precio: 30000,
-    imagen: pic05,
+    imagen: "/images/pic05.jpg", 
   },
   {
     nombre: "Sekiro",
     comentario:
       "Acción desafiante ambientada en un Japón ficticio, desarrollada por FromSoftware.",
     precio: 22000,
-    imagen: pic06,
+    imagen: "/images/pic06.jpg", 
   },
   {
     nombre: "Call Of Duty BO2",
     comentario:
       "Entrega clásica de la saga Call of Duty con modo campaña y multijugador.",
     precio: 19990,
-    imagen: blackOPs,
+    imagen: "/images/blackOPs.jpg", 
   },
   {
     nombre: "2K26",
     comentario:
       "Nueva edición del simulador de la NBA con mejoras en jugabilidad y modos.",
     precio: 40000,
-    imagen: pic2k26,
+    imagen: "/images/2K26.jpg", 
   },
   {
     nombre: "No Man's Sky",
     comentario:
       "Videojuego de exploración y supervivencia con universo generado proceduralmente.",
     precio: 15000,
-    imagen: nomansky,
+    imagen: "/images/nomansky.jpg", 
   },
 ];
 
@@ -95,7 +84,6 @@ export default function DetalleProducto() {
       idx = qs.get("index");
     }
     const i = Number(idx);
-    console.log("DetalleProducto: index param/search ->", idx, location.search);
     if (!Number.isNaN(i) && i >= 0 && i < products.length) {
       setProduct(products[i]);
     } else {
@@ -129,7 +117,7 @@ export default function DetalleProducto() {
             <div className="cajilla-box">
               <img
                 id="imagen-principal"
-                src={product.imagen}
+                src={product.imagen} // Ahora usa la ruta correcta
                 alt={product.nombre}
                 style={{ maxWidth: "100%", height: 310 }}
               />

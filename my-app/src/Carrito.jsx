@@ -3,35 +3,17 @@ import { useNavigate, Link } from "react-router-dom";
 import "./styles/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import pic01 from "./images/pic01.jpg";
-import pic02 from "./images/pic02.jpg";
-import pic03 from "./images/pic03.jpg";
-import pic04 from "./images/pic04.jpg";
-import pic05 from "./images/pic05.jpg";
-import pic06 from "./images/pic06.jpg";
-import blackOPs from "./images/blackOPs.jpg";
-import pic2k26 from "./images/2K26.jpg";
-import nomansky from "./images/nomansky.jpg";
+import productos from "./utils/productosData";  // Asegúrate de que el archivo productosData.js esté importado correctamente
 
 export default function Carrito() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]); // El carrito estará en el estado local
   const [total, setTotal] = useState(0);
 
-  const productos = [
-    { id: 0, title: "Persona 3: Reload", price: 18500, image: pic01 },
-    { id: 1, title: "God of War: Ragnarok", price: 25500, image: pic02 },
-    { id: 2, title: "SilkSong", price: 10500, image: pic03 },
-    { id: 3, title: "Lego: Batman", price: 5500, image: pic04 },
-    { id: 4, title: "Elden Ring", price: 30000, image: pic05 },
-    { id: 5, title: "Sekiro", price: 22000, image: pic06 },
-    { id: 6, title: "Call Of Duty BO2", price: 19990, image: blackOPs },
-    { id: 7, title: "2K26", price: 40000, image: pic2k26 },
-    { id: 8, title: "No Man's Sky", price: 15000, image: nomansky },
-  ];
-
+  // Formatear los precios
   const formatCurrency = (n) => "$" + Number(n).toLocaleString("es-CL");
 
+  // Leer el carrito del almacenamiento local (o API externa si existe)
   const readCart = () => {
     if (window.cartAPI && typeof window.cartAPI.getCart === "function") {
       return window.cartAPI.getCart();
@@ -44,6 +26,7 @@ export default function Carrito() {
     }
   };
 
+  // Escribir el carrito en el almacenamiento local (o API externa si existe)
   const writeCart = (newCart) => {
     if (window.cartAPI && typeof window.cartAPI.setCart === "function") {
       window.cartAPI.setCart(newCart);
@@ -61,7 +44,6 @@ export default function Carrito() {
   useEffect(() => {
     setCart(readCart());
 
-    // Optional: listen to storage events (other tabs)
     const onStorage = (e) => {
       if (e.key === "cart") setCart(readCart());
     };
@@ -69,15 +51,17 @@ export default function Carrito() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
+  // Calcular el total cuando el carrito cambia
   useEffect(() => {
     let acc = 0;
     cart.forEach((item) => {
       const prod = productos.find((p) => p.id === item.id);
-      if (prod) acc += prod.price * (item.qty || 1);
+      if (prod) acc += prod.price * item.qty;  // Multiplicamos el precio por la cantidad para calcular el total
     });
-    setTotal(acc);
+    setTotal(acc); // Actualizar el total con el cálculo correcto
   }, [cart]);
 
+  // Eliminar un producto del carrito
   const removeFromCart = (id) => {
     if (window.cartAPI && typeof window.cartAPI.removeFromCart === "function") {
       window.cartAPI.removeFromCart(id);
@@ -88,17 +72,19 @@ export default function Carrito() {
     writeCart(newCart);
   };
 
+  // Cambiar la cantidad de un producto en el carrito
   const changeQty = (id, qty) => {
-    qty = Math.max(1, Number(qty) || 1);
+    qty = Math.max(1, Number(qty) || 1);  // Asegurar que la cantidad sea siempre al menos 1
     if (window.cartAPI && typeof window.cartAPI.changeQty === "function") {
       window.cartAPI.changeQty(id, qty);
       setCart(readCart());
       return;
     }
-    const newCart = cart.map((c) => (c.id === id ? { ...c, qty } : c));
+    const newCart = cart.map((c) => (c.id === id ? { ...c, qty } : c));  // Actualizar la cantidad del producto en el carrito
     writeCart(newCart);
   };
 
+  // Vaciar el carrito
   const clearCart = () => {
     if (window.cartAPI && typeof window.cartAPI.clearCart === "function") {
       window.cartAPI.clearCart();
@@ -123,7 +109,8 @@ export default function Carrito() {
                   const prod = productos.find((p) => p.id === item.id);
                   if (!prod) return null;
                   const qty = item.qty || 1;
-                  const lineTotal = prod.price * qty;
+                  const lineTotal = prod.price * qty;  // Precio por producto (multiplicado por qty)
+
                   return (
                     <div
                       key={item.id}
@@ -136,14 +123,14 @@ export default function Carrito() {
                           style={{
                             width: 80,
                             height: 80,
-                            objectFit: "cover",
+                            objectFit: "cover",  // Asegurando que las imágenes no se deformen
                             marginRight: 12,
                           }}
                         />
                         <div>
                           <div style={{ fontWeight: 600 }}>{prod.title}</div>
                           <div style={{ color: "#666" }}>
-                            {formatCurrency(prod.price)}
+                            {formatCurrency(prod.price)} {/* Mostrar el precio por unidad */}
                           </div>
                         </div>
                       </div>
@@ -155,7 +142,7 @@ export default function Carrito() {
                           style={{ width: 80, marginRight: 12 }}
                           min={1}
                           value={qty}
-                          onChange={(e) => changeQty(item.id, e.target.value)}
+                          onChange={(e) => changeQty(item.id, e.target.value)} // Actualizar la cantidad
                         />
                         <div
                           style={{
@@ -164,11 +151,11 @@ export default function Carrito() {
                             marginRight: 12,
                           }}
                         >
-                          {formatCurrency(lineTotal)}
+                          {formatCurrency(lineTotal)} {/* Mostrar el total por línea (precio * cantidad) */}
                         </div>
                         <button
                           className="btn btn-danger btn-sm"
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.id)} // Eliminar producto
                         >
                           Eliminar
                         </button>
@@ -182,13 +169,13 @@ export default function Carrito() {
             <div className="d-flex justify-content-between align-items-center">
               <h4>
                 Total:{" "}
-                <span id="cart-total">{formatCurrency(total)}</span>
+                <span id="cart-total">{formatCurrency(total)}</span> {/* Total del carrito */}
               </h4>
               <div>
                 <button
                   id="clear-cart"
                   className="btn btn-secondary"
-                  onClick={clearCart}
+                  onClick={clearCart} // Vaciar carrito
                 >
                   Vaciar carrito
                 </button>
@@ -205,7 +192,7 @@ export default function Carrito() {
             <div style={{ marginTop: 16 }}>
               <button
                 className="btn btn-link"
-                onClick={() => navigate("/productos")}
+                onClick={() => navigate("/productos")} // Continuar comprando
               >
                 Seguir comprando
               </button>
@@ -219,3 +206,4 @@ export default function Carrito() {
     </div>
   );
 }
+

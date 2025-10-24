@@ -48,32 +48,32 @@ export default function Home() {
             <div className="row">
               {[
                 {
-                  img: "src/images/pic01.jpg",
+                  img: "public/images/pic01.jpg",
                   title: "Persona 3: Reload",
                   text: "Persona 3 Reload es un remake del RPG de 2006 Persona 3.",
                 },
                 {
-                  img: "src/images/pic02.jpg",
+                  img: "public/images/pic02.jpg",
                   title: "God of War: Ragnarok",
                   text: "Secuela de God Of War, donde volvemos a ser Kratos.",
                 },
                 {
-                  img: "src/images/pic03.jpg",
+                  img: "public/images/pic03.jpg",
                   title: "SilkSong",
                   text: "Secuela de Hollow Knight, Controlamos a Hornet.",
                 },
                 {
-                  img: "src/images/pic04.jpg",
+                  img: "public/images/pic04.jpg",
                   title: "Lego: Batman",
                   text: "Vuelves Como el Caballero de la noche en forma de Lego.",
                 },
                 {
-                  img: "src/images/pic05.jpg",
+                  img: "public/images/pic05.jpg",
                   title: "Elden Ring",
                   text: "Nuevo Entrega de FromSoftware, Juego Tipo DarkSouls.",
                 },
                 {
-                  img: "src/images/pic06.jpg",
+                  img: "public/images/pic06.jpg",
                   title: "Sekiro",
                   text: "Es un Japón ficticio de finales del siglo XVI Reinado por la violencia.",
                 },

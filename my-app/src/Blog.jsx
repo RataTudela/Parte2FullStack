@@ -28,7 +28,7 @@ export default function Blog() {
             </div>
             <div className="blog-img">
               <img
-                src="src/images/noticia01.jpg"
+                src="public/images/noticia01.jpg"
                 alt="Imagen caso curioso"
                 style={{ width: "100%", maxWidth: "487px", height: "auto" }}
               />
@@ -56,7 +56,7 @@ export default function Blog() {
             </div>
             <div className="blog-img">
               <img
-                src="src/images/noticia02.jpg"
+                src="public/images/noticia02.jpg"
                 alt="Imagen caso curioso"
                 style={{ width: "100%", maxWidth: "487px", height: "auto" }}
               />

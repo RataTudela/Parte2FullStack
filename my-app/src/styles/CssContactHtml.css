@@ -1,5 +1,5 @@
 body.route-contacto .img-fondo {
-    background-image: url('src/images/mario.jpg'); 
+    background-image: url('public/images/mario.jpg'); 
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat; 
